@@ -148,6 +148,7 @@ def classify_paragraphs(df):
 
 # === UI ===
 st.title("📄 Agri-Policy Paragraph Classifier")
+st.markdown("Upload one or more policy PDFs...")
 
 uploaded_files = st.file_uploader("Upload PDF files", type="pdf", accept_multiple_files=True)
 
@@ -170,6 +171,14 @@ if uploaded_files and st.button("🚀 Run Classification"):
         combined_df.to_excel("outputs/Combined_Results.xlsx", index=False)
         st.success("✅ Results saved in `outputs/Combined_Results.xlsx`")
 
+st.set_page_config(page_title="Agri-Policy Classifier", layout="wide")
+st.title("📄 Agri-Policy Paragraph Classifier")
+
+with st.sidebar:
+    st.markdown("## 📂 Upload PDFs")
+    uploaded_files = st.file_uploader("Upload PDF files", type="pdf", accept_multiple_files=True)
+    run = st.button("🚀 Run Classification")
+    
 # === Show + Download ===
 if "combined_df" in st.session_state:
     # st.subheader("📊 Classified Paragraphs")
