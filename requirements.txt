@@ -1,1 +1,7 @@
+streamlit
+pymupdf
+pandas
+openpyxl
+tqdm
+openai
 
