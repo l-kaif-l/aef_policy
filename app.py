@@ -150,7 +150,7 @@ uploaded_files = st.sidebar.file_uploader("Upload PDF files", type="pdf", accept
 run = st.sidebar.button("🚀 Run Classification")
 
 # === MAIN INTERFACE ===
-st.title("📄 Agri-Policy Paragraph Classifier")
+st.title("📄 Agri-Policy Classifier")
 
 if run and uploaded_files:
     os.makedirs("outputs/themes", exist_ok=True)
