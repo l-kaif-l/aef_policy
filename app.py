@@ -172,8 +172,8 @@ if uploaded_files and st.button("🚀 Run Classification"):
 
 # === Show + Download ===
 if "combined_df" in st.session_state:
-    st.subheader("📊 Classified Paragraphs")
-    st.dataframe(st.session_state.combined_df, use_container_width=True)
+    # st.subheader("📊 Classified Paragraphs")
+    # st.dataframe(st.session_state.combined_df, use_container_width=True)
 
     # Combined download
     to_download = BytesIO()
