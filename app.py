@@ -177,23 +177,40 @@ if run and uploaded_files:
 if "combined_df" in st.session_state:
     df = st.session_state["combined_df"]
 
-    # Table
-    st.subheader("📊 Classified Paragraphs")
-    st.dataframe(df, use_container_width=True)
+    # st.subheader("📊 View Results")
+    # st.dataframe(df, use_container_width=True)
 
-    # Combined Download
     excel_io = BytesIO()
     df.to_excel(excel_io, index=False)
     st.download_button("📥 Download Combined Excel", data=excel_io.getvalue(), file_name="Combined_Results.xlsx")
 
-    # Theme-wise Downloads
     for theme in df["Main Theme"].dropna().unique():
         themed_df = df[df["Main Theme"] == theme]
         if not themed_df.empty:
             buffer = BytesIO()
             themed_df.to_excel(buffer, index=False)
-            buffer.seek(0)
             st.download_button(f"📂 Download: {safe_theme_name(theme)}", data=buffer.getvalue(), file_name=f"{safe_theme_name(theme)}.xlsx")
+
+# if "combined_df" in st.session_state:
+#     df = st.session_state["combined_df"]
+
+#     # Table
+#     st.subheader("📊 Classified Paragraphs")
+#     st.dataframe(df, use_container_width=True)
+
+#     # Combined Download
+#     excel_io = BytesIO()
+#     df.to_excel(excel_io, index=False)
+#     st.download_button("📥 Download Combined Excel", data=excel_io.getvalue(), file_name="Combined_Results.xlsx")
+
+#     # Theme-wise Downloads
+#     for theme in df["Main Theme"].dropna().unique():
+#         themed_df = df[df["Main Theme"] == theme]
+#         if not themed_df.empty:
+#             buffer = BytesIO()
+#             themed_df.to_excel(buffer, index=False)
+#             buffer.seek(0)
+#             st.download_button(f"📂 Download: {safe_theme_name(theme)}", data=buffer.getvalue(), file_name=f"{safe_theme_name(theme)}.xlsx")
 
 
 
